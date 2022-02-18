@@ -1,0 +1,57 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Opgave_1_kode_og_unit_test;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Opgave_1_kode_og_unit_test.Tests
+{
+    [TestClass()]
+    public class CarTests
+    {
+        private Car car;
+        [TestInitialize()]
+        public void Intialize()
+        {
+            car = new Car("Toyota", 40, "aa354");
+        }
+
+        [TestMethod()]
+        public void ConstructorTest()
+        {
+            Assert.AreEqual("Toyota", car.Model);
+            Assert.AreEqual(40, car.Price);
+            Assert.AreEqual("aa354", car.LicensePlate);
+        }
+        [TestMethod()]
+        public void IdTest()
+        {
+            Assert.AreNotEqual(0, car.Id);
+            //Assert.AreEqual(1, car.Id);
+            //Car car2 = new Car("Tesla", 100000, "Cl7980");
+            //Assert.AreEqual(2, car2.Id);
+        }
+
+        [TestMethod()]
+        public void ModelTest()
+        {
+            Assert.AreNotEqual("Subaru", car.Model);
+            Car car2 = new Car("Kia", 80, "CL2985");
+            Assert.ThrowsException<ArgumentException>(() => car2.Model);
+
+
+        }
+        [TestMethod()]
+        public void PriceTest()
+        {
+
+        }
+        [TestMethod()]
+        public void LicensePlateTest()
+        {
+
+        }
+    }
+}
